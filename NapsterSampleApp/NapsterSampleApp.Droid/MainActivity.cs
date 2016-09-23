@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using ReactiveUI;
+using ReactiveUI.Legacy;
 using Xamarin.Forms;
 
 namespace NapsterSampleApp.Droid
@@ -22,6 +23,7 @@ namespace NapsterSampleApp.Droid
 
             // NB: This is the worst way ever to handle UserErrors and definitely *not*
             // best practice. Help your users out!
+            // TODO
             UserError.RegisterHandler(ue => {
                 var toast = Toast.MakeText(this, ue.ErrorMessage, ToastLength.Short);
                 toast.Show();
@@ -29,8 +31,8 @@ namespace NapsterSampleApp.Droid
                 return Observable.Return(RecoveryOptionResult.CancelOperation);
             });
 
-            var bootstrapper = RxApp.SuspensionHost.GetAppState<AppBootstrapper>();
-            this.SetPage(bootstrapper.CreateMainPage());
+          
+            LoadApplication(new App());
         }
     }
 }
