@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="ApiKeyProvider.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="AppBootStrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

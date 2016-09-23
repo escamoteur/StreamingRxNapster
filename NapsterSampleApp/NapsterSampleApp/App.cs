@@ -39,6 +39,7 @@ namespace NapsterSampleApp
 
         private void B_Clicked(object sender, EventArgs e)
         {
+            throw new NotImplementedException();
             var o = provider.GetNewReleases(10, 0);
            
             o.Subscribe(OnNext,OnError,OnCompleted);
