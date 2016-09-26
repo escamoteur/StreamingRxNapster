@@ -38,8 +38,16 @@
     <Compile Include="ApiKeyProvider.cs" />
     <Compile Include="App.cs" />
     <Compile Include="AppBootStrapper.cs" />
+    <Compile Include="ItemViewModels\AlbumViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\NewReleasesViewModel.cs" />
     <Compile Include="ViewModels\StartViewModel.cs" />
+    <Compile Include="Views\ItemViewAlbum.xaml.cs">
+      <DependentUpon>ItemViewAlbum.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewReleasesView.xaml.cs">
+      <DependentUpon>NewReleasesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
     </Compile>
@@ -52,6 +60,10 @@
   <ItemGroup>
     <Reference Include="ReactiveUI, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\reactiveui-core.7.0.0.1474320879\lib\portable-net45+netcore45+wpa81+win8+wp8+UAP10+MonoAndroid403+MonoTouch10+Xamarin.iOS10\ReactiveUI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ReactiveUI.Fody.Helpers, Version=1.1.53.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ReactiveUI.Fody.1.1.53\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\ReactiveUI.Fody.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ReactiveUI.XamForms, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -100,9 +112,23 @@
       <Name>StreamingRxNapster</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="FodyWeavers.xml" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\StartView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\NewReleasesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ItemViewAlbum.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -114,7 +140,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Fody.1.28.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Fody.1.28.3\build\Fody.targets'))" />
   </Target>
+  <Import Project="..\..\packages\Fody.1.28.3\build\Fody.targets" Condition="Exists('..\..\packages\Fody.1.28.3\build\Fody.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xamForms="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+             xmlns:viewModels="clr-namespace:NapsterSampleApp.ViewModels;assembly=NapsterSampleApp"
+             x:Class="NapsterSampleApp.Views.NewReleasesView" >
+  
+ <ContentPage.Content>
+   <Grid>
+     <Grid.ColumnDefinitions>
+       <ColumnDefinitionCollection>
+         <ColumnDefinition Width="Auto"/>
+         <ColumnDefinition Width="5"/>
+         <ColumnDefinition Width="*"/>
+       </ColumnDefinitionCollection>
+     </Grid.ColumnDefinitions>
+     <Grid.RowDefinitions>
+       <RowDefinitionCollection>
+         <RowDefinition Height="Auto"/>
+         <RowDefinition Height="*" />
+       </RowDefinitionCollection>
+     </Grid.RowDefinitions>
+
+     <ListView x:Name="AlbumListView" ItemsSource="{Binding AlbumsList}">
+
+       <ListView.ItemTemplate>
+         <DataTemplate>
+           <ViewCell>
+           <xamForms:ViewModelViewHost ViewModel="{Binding}"></xamForms:ViewModelViewHost>
+           </ViewCell>
+         </DataTemplate>
+       </ListView.ItemTemplate>
+
+       </ListView>
+     
+
+   </Grid>
+   
+   
+ </ContentPage.Content> 
+</ContentPage>

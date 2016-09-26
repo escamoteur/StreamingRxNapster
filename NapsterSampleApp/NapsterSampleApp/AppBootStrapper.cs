@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NapsterSampleApp.ItemViewModels;
 using NapsterSampleApp.ViewModels;
 using NapsterSampleApp.Views;
 using ReactiveUI;
 using ReactiveUI.XamForms;
 using Splat;
+using StreamingRxCommons;
+using StreamingRxNapster;
 using Xamarin.Forms;
 
 namespace NapsterSampleApp
@@ -24,9 +27,14 @@ namespace NapsterSampleApp
             Locator.CurrentMutable.RegisterConstant(this, typeof(IScreen));
 
 
+            Locator.CurrentMutable.Register(()=> new StreamingProviderNapster(ApiKeyProvider.GetApiKey), typeof(IStreamingProvider));
+
+
             // CoolStuff: For routing to work, we need to tell ReactiveUI how to
             // create the Views associated with our ViewModels
             Locator.CurrentMutable.Register(() => new StartView(), typeof(IViewFor<StartViewModel>));
+            Locator.CurrentMutable.Register(() => new NewReleasesView(), typeof(IViewFor<NewReleasesViewModel>));
+            Locator.CurrentMutable.Register(() => new ItemViewAlbum(), typeof(IViewFor<AlbumViewModel>));
 
             //// Kick off to the first page of our app. If we don't navigate to a
             //// page on startup, Xamarin Forms will get real mad (and even if it
