@@ -24,8 +24,6 @@ namespace NapsterSampleApp.ViewModels
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             
-            var load = 
-
             NewReleases = ReactiveCommand.Create(Execute);
             
             NewReleases.ThrownExceptions.Subscribe(OnNext);
