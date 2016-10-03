@@ -29,5 +29,8 @@ namespace StreamingRxNapster
         {
             return NapsterAPI.GetNewReleases(limit, offset, apiKey).Select(albumsContainer => albumsContainer.albums);
         }
+
+
+
     }
 }

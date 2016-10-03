@@ -38,17 +38,17 @@
     <Compile Include="ApiKeyProvider.cs" />
     <Compile Include="App.cs" />
     <Compile Include="AppBootStrapper.cs" />
-    <Compile Include="ItemViewModels\AlbumViewModel.cs" />
+    <Compile Include="ItemViewModels\ItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\NewReleasesViewModel.cs" />
-    <Compile Include="ViewModels\StartViewModel.cs" />
-    <Compile Include="Views\ItemViewAlbum.xaml.cs">
-      <DependentUpon>ItemViewAlbum.xaml</DependentUpon>
+    <Compile Include="PageModels\PublicApiViewModel.cs" />
+    <Compile Include="PageModels\StartViewModel.cs" />
+    <Compile Include="Pages\ItemView.xaml.cs">
+      <DependentUpon>ItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewReleasesView.xaml.cs">
-      <DependentUpon>NewReleasesView.xaml</DependentUpon>
+    <Compile Include="Pages\PublicApiView.xaml.cs">
+      <DependentUpon>PublicApiView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StartView.xaml.cs">
+    <Compile Include="Pages\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="PropertyChanged, Version=1.51.3.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PropertyChanged.Fody.1.51.3\lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ReactiveUI, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\reactiveui-core.7.0.0.1474320879\lib\portable-net45+netcore45+wpa81+win8+wp8+UAP10+MonoAndroid403+MonoTouch10+Xamarin.iOS10\ReactiveUI.dll</HintPath>
       <Private>True</Private>
@@ -107,6 +111,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\Tests\FreshMvvm\src\FreshMvvm\FreshMvvm.csproj">
+      <Project>{acba1111-2c39-4126-b60a-51ee9d0c734b}</Project>
+      <Name>FreshMvvm</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\StreamingRxNapster\StreamingRxNapster.csproj">
       <Project>{f2d80b2e-74e4-4bd0-bc2e-84d7820f8d62}</Project>
       <Name>StreamingRxNapster</Name>
@@ -116,19 +124,19 @@
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\StartView.xaml">
+    <EmbeddedResource Include="Pages\StartView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\NewReleasesView.xaml">
+    <EmbeddedResource Include="Pages\PublicApiView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ItemViewAlbum.xaml">
+    <EmbeddedResource Include="Pages\ItemView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -140,9 +148,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Fody.1.28.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Fody.1.28.3\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets'))" />
   </Target>
-  <Import Project="..\..\packages\Fody.1.28.3\build\Fody.targets" Condition="Exists('..\..\packages\Fody.1.28.3\build\Fody.targets')" />
+  <Import Project="..\..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

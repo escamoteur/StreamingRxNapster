@@ -4,7 +4,7 @@
              x:Class="NapsterSampleApp.Views.StartView">
 <ContentPage.Content>
     <StackLayout>
-      <Button x:Name="BtnNewReleases" Text="NewReleases"/>
+      <Button x:Name="BtnPublicApi" Text="Public Metadata API"/>
       
     </StackLayout>
   

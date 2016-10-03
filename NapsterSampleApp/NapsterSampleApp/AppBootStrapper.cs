@@ -24,7 +24,7 @@ namespace NapsterSampleApp
         public AppBootstrapper()
         {
             Router = new RoutingState();
-            Locator.CurrentMutable.RegisterConstant(this, typeof(IScreen));
+//            Locator.CurrentMutable.RegisterConstant(this, typeof(IScreen));
 
 
             Locator.CurrentMutable.Register(()=> new StreamingProviderNapster(ApiKeyProvider.GetApiKey), typeof(IStreamingProvider));
@@ -32,14 +32,14 @@ namespace NapsterSampleApp
 
             // CoolStuff: For routing to work, we need to tell ReactiveUI how to
             // create the Views associated with our ViewModels
-            Locator.CurrentMutable.Register(() => new StartView(), typeof(IViewFor<StartViewModel>));
-            Locator.CurrentMutable.Register(() => new NewReleasesView(), typeof(IViewFor<NewReleasesViewModel>));
-            Locator.CurrentMutable.Register(() => new ItemViewAlbum(), typeof(IViewFor<AlbumViewModel>));
+            //Locator.CurrentMutable.Register(() => new StartView(), typeof(IViewFor<StartViewModel>));
+            //Locator.CurrentMutable.Register(() => new PublicApiView(), typeof(IViewFor<PublicApiViewModel>));
+            //Locator.CurrentMutable.Register(() => new ItemView(), typeof(IViewFor<AlbumViewModel>));
 
             //// Kick off to the first page of our app. If we don't navigate to a
             //// page on startup, Xamarin Forms will get real mad (and even if it
             //// didn't, our users would!)
-            Router.Navigate.Execute(new StartViewModel(this));
+//            Router.Navigate.Execute(new StartViewModel(this));
         }
 
         public Page CreateMainPage()

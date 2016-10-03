@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Text;
 using System.Threading;
+using FreshMvvm;
+using NapsterSampleApp.ViewModels;
 using ReactiveUI;
 using StreamingRxCommons;
 using StreamingRxNapster;
@@ -22,7 +24,9 @@ namespace NapsterSampleApp
             provider = new StreamingProviderNapster(ApiKeyProvider.GetApiKey);
 
             // The root page of your application
-            MainPage = bootstrapper.CreateMainPage();
+            var page = FreshPageModelResolver.ResolvePageModel<StartViewModel>();
+            var basicNavContainer = new FreshNavigationContainer(page);
+            MainPage = basicNavContainer;
         }
 
         private void B_Clicked(object sender, EventArgs e)

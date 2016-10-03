@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Disposables;
 using System.Text;
 using System.Threading.Tasks;
 using NapsterSampleApp.ViewModels;
@@ -11,7 +12,7 @@ using Xamarin.Forms;
 
 namespace NapsterSampleApp.Views
 {
-    public partial class StartView : ContentPage,IViewFor<StartViewModel>
+    public partial class StartView : ContentPage,IViewFor<StartViewModel>, IActivatable
     {
 
 
@@ -19,8 +20,14 @@ namespace NapsterSampleApp.Views
         {
             InitializeComponent();
 
-            this.BindCommand(ViewModel, vm => vm.NewReleases, v => v.BtnNewReleases);
+            this.WhenActivated(d =>
+            {
+                ViewModel = (StartViewModel) BindingContext;
 
+
+                this.BindCommand(ViewModel, vm => vm.GoToPublicApi, v => v.BtnPublicApi).DisposeWith(d);
+
+            });
         }
 
 

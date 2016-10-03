@@ -173,6 +173,14 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\Tests\FreshMvvm\src\FreshIOC\IOC.csproj">
+      <Project>{ce6aa8f2-bd67-4051-8ae6-9ffca9e663fe}</Project>
+      <Name>IOC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\Tests\FreshMvvm\src\FreshMvvm\FreshMvvm.csproj">
+      <Project>{acba1111-2c39-4126-b60a-51ee9d0c734b}</Project>
+      <Name>FreshMvvm</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NapsterSampleApp\NapsterSampleApp.csproj">
       <Project>{65C94337-13CE-42B7-A5C8-05ECB38E6C42}</Project>
       <Name>NapsterSampleApp</Name>

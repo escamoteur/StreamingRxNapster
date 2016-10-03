@@ -3,13 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xamForms="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
              xmlns:viewModels="clr-namespace:NapsterSampleApp.ViewModels;assembly=NapsterSampleApp"
-             x:Class="NapsterSampleApp.Views.NewReleasesView" >
+             xmlns:local="clr-namespace:NapsterSampleApp.Views;assembly=NapsterSampleApp"
+             x:Class="NapsterSampleApp.Views.PublicApiView" >
   
  <ContentPage.Content>
    <Grid>
      <Grid.ColumnDefinitions>
        <ColumnDefinitionCollection>
-         <ColumnDefinition Width="Auto"/>
+         <ColumnDefinition Width="*"/>
+         <ColumnDefinition Width="5"/>
+         <ColumnDefinition Width="*"/>
          <ColumnDefinition Width="5"/>
          <ColumnDefinition Width="*"/>
        </ColumnDefinitionCollection>
@@ -21,13 +24,25 @@
        </RowDefinitionCollection>
      </Grid.RowDefinitions>
 
-     <ListView x:Name="AlbumListView" ItemsSource="{Binding AlbumsList}">
+
+    <Picker x:Name="ItemType"  Grid.Column="0" Grid.Row="0">
+        <Picker.Items>
+            <x:String>Top Artists</x:String> 
+            <x:String>New Releases</x:String>
+            <x:String>Top Tracks</x:String>           
+        </Picker.Items>
+    </Picker> 
+     
+     
+    <Entry x:Name="Limit" Grid.Column="2" Grid.Row="0"/> 
+     
+    <Button x:Name="UpdateButton" Text ="Update" Grid.Column="4" Grid.Row="0"/> 
+       
+     <ListView x:Name="AlbumListView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5">
 
        <ListView.ItemTemplate>
          <DataTemplate>
-           <ViewCell>
-           <xamForms:ViewModelViewHost ViewModel="{Binding}"></xamForms:ViewModelViewHost>
-           </ViewCell>
+           <local:ItemView ViewModel="{Binding .}"/>
          </DataTemplate>
        </ListView.ItemTemplate>
 
